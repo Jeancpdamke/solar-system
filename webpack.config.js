@@ -1,4 +1,7 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
+
 var webpack = require('webpack')
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
@@ -10,43 +13,52 @@ const config = function (mode) {
         entry: ['./src/index.js'],
         module: {
             rules: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['env']
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['env']
+                        }
                     }
+                },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader'],
+                },
+                {
+                    test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                    type: 'asset/resource',
                 }
-            },
-            {
-                test: /\.html$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'html-loader',
-                    options: {}
-                }
-            },
-            {
-              test: /\.css$/,
-              use: ['style-loader', 'css-loader'],
-            },
-        ]
+            ]
         },
         output: {
-            path: path.resolve(__dirname, 'public/bundle/'),
+            path: path.resolve(__dirname, 'dist/'),
             filename: 'bundle.js',
             publicPath: '/',
+            assetModuleFilename: 'assets/[name][ext][query]'
         },
-        plugins: [],
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: './public/index.html'
+            }),
+            new CopyPlugin({
+                patterns: [
+                    { from: "assets", to: "assets" },
+                ],
+            }),
+        ],
         devServer: {
-            watchOptions: {
-                ignored: /node_modules/
+            static: {
+                watch: true,
+                staticOptions: {
+                    ignored: /node_modules/
+                },
+                publicPath: 'public',
             },
-            contentBase: 'public',
             compress: true,
-            hot: true,
+            hot: "only",
             port: process.env.CVA_PORT
         }
     }

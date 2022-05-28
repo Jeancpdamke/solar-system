@@ -29,7 +29,7 @@ const init = () => {
   const SUN_RADIUS = 696340;
   const scaledSunRadius = getScaledStarRadius(SUN_RADIUS);
   const sunGeometry = new THREE.SphereGeometry( scaledSunRadius, 100, 100 );
-  const sunTexture = new THREE.TextureLoader().load('textures/8k_sun.jpeg')
+  const sunTexture = new THREE.TextureLoader().load('assets/textures/8k_sun.jpeg')
   const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture })
   sun = new THREE.Mesh(sunGeometry, sunMaterial);
   scene.add(sun);

@@ -8,7 +8,7 @@ export const planets = [
         name: 'Mercury',
         radius: 2439.7,
         maxDistanceFromSun: 69816900,
-        textureFileName: 'textures/mercury.jpeg'
+        textureFileName: 'assets/textures/mercury.jpeg'
     },
     // VENUS
     // Radius: 6.051,8  km
@@ -19,7 +19,7 @@ export const planets = [
         name: 'Venus',
         radius: 6051.8,
         maxDistanceFromSun: 108200000,
-        textureFileName: 'textures/venus.jpeg'
+        textureFileName: 'assets/textures/venus.jpeg'
     },
     // EARTH
     // Radius: 6.371 km
@@ -31,6 +31,6 @@ export const planets = [
         name: 'Earth',
         radius: 6371,
         maxDistanceFromSun: 152100000,
-        textureFileName: 'textures/earth.jpeg'
+        textureFileName: 'assets/textures/earth.jpeg'
     }
 ]
