@@ -1,3 +1,7 @@
+// Intersection Sphere Scale:
+// Variable used to create the intersection sphere. For small planets, we need a bigger intersection sphere
+// Default value is 2
+
 export const planets = [
     // MERCURY
     // Radius: 2.439,7 km
@@ -7,6 +11,7 @@ export const planets = [
     {
         name: 'Mercury',
         radius: 2439.7,
+        intersectionSphereScale: 4,
         maxDistanceFromSun: 69816900,
         textureFileName: 'assets/textures/mercury.jpeg'
     },
@@ -33,4 +38,4 @@ export const planets = [
         maxDistanceFromSun: 152100000,
         textureFileName: 'assets/textures/earth.jpeg'
     }
-]
+];
