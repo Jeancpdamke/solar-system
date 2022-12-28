@@ -1,5 +1,8 @@
-# solar-system
+# ThreeJS Solar System
 3D visualisation of the solar system using ThreeJS
+
+A preview of the current master branch can be seen [here](https://jeancpdamke.github.io/solar-system/)
+
 
 ### Install dependencies
 
