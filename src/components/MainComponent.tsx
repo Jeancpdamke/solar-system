@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
+import { MapControls } from 'three/addons/controls/MapControls.js';
 import { ORBITS } from '@/constants/orbits';
 import { PLANETS } from '@/constants/planets';
 import { getScaledDistance, createSunOrPlanetMesh, createPlanetOrbit, createIntersectionSphere } from '@/helpers/utils';
