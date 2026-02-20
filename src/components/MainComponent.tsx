@@ -9,6 +9,8 @@ import { SUN_RADIUS } from '@/constants/constants';
 export const MainComponent = () => {
     const scene = useRef(new THREE.Scene())
     const camera = useRef(new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 ))
+    camera.current.position.x = -80;
+    camera.current.position.y = 20;
     const renderer = useRef(new THREE.WebGLRenderer({ antialias: true }))
     const controls = useRef(new MapControls(camera.current, renderer.current.domElement))
     const renderedPlanets = useRef<THREE.Mesh[]>([]);
@@ -22,9 +24,6 @@ export const MainComponent = () => {
     const sunIntersectionSphere = useRef<THREE.Mesh>(undefined)
 
     const initializeScene = () => {
-        camera.current.position.x = -80;
-        camera.current.position.y = 20;
-        
         renderer.current.setSize( window.innerWidth, window.innerHeight );
         document.getElementById('canvas')!.appendChild(renderer.current.domElement);
 
