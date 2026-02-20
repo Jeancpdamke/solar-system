@@ -10,7 +10,7 @@ export const MainComponent = () => {
     const scene = useRef(new THREE.Scene())
     const camera = useRef(new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 ))
     const renderer = useRef(new THREE.WebGLRenderer({ antialias: true }))
-    const controls = useRef(new MapControls(camera, renderer.current.domElement))
+    const controls = useRef(new MapControls(camera.current, renderer.current.domElement))
     const renderedPlanets = useRef<THREE.Mesh[]>([]);
     // Raycaster works poorly for small spheres, so we create an invisible sphere with a bigger radius to compensate that
     const intersectionSpheres = useRef<THREE.Mesh[]>([]);
@@ -26,7 +26,7 @@ export const MainComponent = () => {
         camera.current.position.y = 20;
         
         renderer.current.setSize( window.innerWidth, window.innerHeight );
-        document.getElementById('app')!.appendChild(renderer.current.domElement);
+        document.getElementById('canvas')!.appendChild(renderer.current.domElement);
 
         // Controls
         controls.current.enableDamping = true;
@@ -135,5 +135,5 @@ export const MainComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return null
+    return <div id="canvas"></div>
 }
