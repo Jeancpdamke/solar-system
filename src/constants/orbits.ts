@@ -1,16 +1,17 @@
+
+import type { Orbit } from "@/interfaces";
+
 // Focal distance calculation:
 // Given that Semi-major axis = SMajA
 // AND Semi-minor axis = SMinA
 // Focal Distance =  Square root of (SMajA^2 + SMinA^2)
-
 
 // Minor axis calculation
 // Give eccentricity = ecc
 // AND Semi-major axis = SMaxA
 // Semi-minor axis = SMaxA * sqrt(1 - ecc^2)
 
-
-export const orbits = [
+export const ORBITS: Orbit[] = [
     // MERCURY
     // Orbit Duration: 87.97 days
     // Semi-major axis: 57 909 050 km (0.387098 AU)

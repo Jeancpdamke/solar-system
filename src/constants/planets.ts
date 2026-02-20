@@ -1,8 +1,6 @@
-// Intersection Sphere Scale:
-// Variable used to create the intersection sphere. For small planets, we need a bigger intersection sphere
-// Default value is 2
+import type { Planet } from "@/interfaces";
 
-export const planets = [
+export const PLANETS: Planet[] = [
     // MERCURY
     // Radius: 2.439,7 km
     // Distance from the sun (Average): 58.000.000 km
