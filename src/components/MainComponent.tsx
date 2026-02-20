@@ -73,15 +73,17 @@ export const MainComponent = () => {
             currentlyIntersectedObject.current = undefined;
         }
         if (sunIntersectionSphere.current !== undefined) {
-            sunIntersectionSphere.current.material.opacity = (currentlyIntersectedObject && currentlyIntersectedObject.name === sunIntersectionSphere.name) ? 0.2 : 0;
+            const sunIntersectionMaterial = sunIntersectionSphere.current.material as THREE.Material
+            sunIntersectionMaterial.opacity = (currentlyIntersectedObject.current && currentlyIntersectedObject.current.name === sunIntersectionSphere.current.name) ? 0.2 : 0;
         }
 
 
         intersectionSpheres.current.forEach((object, index) => {
+            const material = intersectionSpheres.current[index].material as THREE.Material
             if (currentlyIntersectedObject && object.name === currentlyIntersectedObject.current?.name) {
-                intersectionSpheres.current[index].material.opacity = 0.2;
+                material.opacity = 0.2;
             } else {
-                intersectionSpheres.current[index].material.opacity = 0;
+                material.opacity = 0;
             }
         })
     }
