@@ -1,4 +1,7 @@
 
+/**
+ * Sun radius: 696.340 km
+ */
 export const SUN_RADIUS = 696340;
 
 /** 

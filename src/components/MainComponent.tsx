@@ -34,7 +34,6 @@ export const MainComponent = () => {
         controls.current.target.set(0, 0, 0)
         
         // SUN
-        // Radius: 696.340 km
         sun.current = createSunOrPlanetMesh('Sun', SUN_RADIUS, 'assets/textures/8k_sun.jpeg', false);
         scene.current.add(sun.current)
         
