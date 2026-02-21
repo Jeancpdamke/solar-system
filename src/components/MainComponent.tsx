@@ -17,6 +17,7 @@ export const MainComponent = () => {
     // Raycaster works poorly for small spheres, so we create an invisible sphere with a bigger radius to compensate that
     const intersectionSpheres = useRef<THREE.Mesh[]>([]);
     const currentlyIntersectedObject = useRef<THREE.Object3D<THREE.Object3DEventMap>>(undefined)
+    
     // initialize object to perform world/screen calculations
     const raycaster = useRef(new THREE.Raycaster())
     const mousePosition = useRef(new THREE.Vector2())
