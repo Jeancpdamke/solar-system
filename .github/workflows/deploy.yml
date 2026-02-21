@@ -1,23 +1,34 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite App to GitHub Pages
 
 on:
   push:
     branches: [main]
 
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout the repository
       - uses: actions/checkout@v4
 
+      # 2️⃣ Set up Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3️⃣ Install dependencies
       - run: npm ci
+
+      # 4️⃣ Build the Vite app
       - run: npm run build
 
+      # 5️⃣ Deploy to GitHub Pages
       - uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: ./dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist       # Vite output directory
+          force_orphan: true        # Creates orphan branch, avoids old files
+          keep_files: false         # Remove old files from previous builds
+          user_name: "github-actions"
+          user_email: "github-actions@github.com"
