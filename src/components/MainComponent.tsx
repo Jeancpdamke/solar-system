@@ -22,6 +22,7 @@ export const MainComponent = () => {
     const mousePosition = useRef(new THREE.Vector2())
     const sun = useRef<THREE.Mesh>(undefined)
     const sunIntersectionSphere = useRef<THREE.Mesh>(undefined)
+    const isInitialized = useRef(false)
 
     const initializeScene = () => {
         renderer.current.setSize( window.innerWidth, window.innerHeight );
@@ -35,7 +36,7 @@ export const MainComponent = () => {
         // SUN
         // Radius: 696.340 km
         sun.current = createSunOrPlanetMesh('Sun', SUN_RADIUS, 'assets/textures/8k_sun.jpeg', false);
-        scene.current.add(sun.current);
+        scene.current.add(sun.current)
         
         sunIntersectionSphere.current = createIntersectionSphere('Sun', SUN_RADIUS, 1.5, false);
         scene.current.add(sunIntersectionSphere.current);
@@ -122,7 +123,10 @@ export const MainComponent = () => {
     }
 
     useEffect(() => {
-        initializeScene()
+        if (!isInitialized.current) {
+            initializeScene()
+            isInitialized.current = true
+        }
         animate()
 
         // Event Listeners
